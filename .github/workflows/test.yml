@@ -11,8 +11,8 @@ jobs:
         with:
           version: 7.23.0
 
-      - name: install
-        run: pnpm install 
-        
-      - name: tests
+      - name: install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: run tests
         run: pnpm test
