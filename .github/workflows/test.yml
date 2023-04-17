@@ -2,11 +2,17 @@ name: Tests
 on: push
 jobs:
   tests:
-    runs-on: ubunto-latest
+    runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
       - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7.23.0
+
       - name: install
         run: pnpm install 
+        
       - name: tests
         run: pnpm test
